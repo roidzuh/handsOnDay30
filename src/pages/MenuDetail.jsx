@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./MenuDetail.module.css";
+import Navbar from "../components/Navbar";
 
 const MenuDetail = () => {
   const [menu, setMenu] = useState({});
@@ -22,16 +23,19 @@ const MenuDetail = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Menu Details</h1>
-      <h2 className={styles.subtitle}>{menu?.name}</h2>
-      <p className={styles.description}>{menu?.description}</p>
-      <div className={styles.imageContainer}>
-        <img className={styles.image} src={menu?.imageUrl} alt={menu?.name} />
+    <>
+      <Navbar />
+      <div className={styles.container}>
+        <h1 className={styles.title}>Menu Details</h1>
+        <h2 className={styles.subtitle}>{menu?.name}</h2>
+        <p className={styles.description}>{menu?.description}</p>
+        <div className={styles.imageContainer}>
+          <img className={styles.image} src={menu?.imageUrl} alt={menu?.name} />
+        </div>
+        <h3 className={styles.type}>{menu?.type}</h3>
+        <h4 className={styles.price}>{menu?.priceFormatted}</h4>
       </div>
-      <h3 className={styles.type}>{menu?.type}</h3>
-      <h4 className={styles.price}>{menu?.priceFormatted}</h4>
-    </div>
+    </>
   );
 };
 
